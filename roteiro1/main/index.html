@@ -444,16 +444,7 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#montagem-do-roteiro" class="md-nav__link">
-    <span class="md-ellipsis">
-      Montagem do Roteiro
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Montagem do Roteiro">
+    <nav class="md-nav" aria-label="Objetivo">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -660,16 +651,7 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#montagem-do-roteiro" class="md-nav__link">
-    <span class="md-ellipsis">
-      Montagem do Roteiro
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Montagem do Roteiro">
+    <nav class="md-nav" aria-label="Objetivo">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -763,29 +745,51 @@
 <h2 id="objetivo"><strong>Objetivo</strong></h2>
 <p>O objetivo deste roteiro é aprender a configurar e gerenciar uma aplicação Django rodando em infraestrutura bare-metal utilizando o <strong>MaaS (Metal as a Service)</strong>. O roteiro aborda desde a instalação manual do banco de dados e da aplicação Django até a automação do deploy utilizando o Ansible e a configuração de um <strong>proxy reverso</strong> para balanceamento de carga.</p>
 <hr />
-<h2 id="montagem-do-roteiro"><strong>Montagem do Roteiro</strong></h2>
 <h3 id="tarefa-1-banco-de-dados-postgresql"><strong>Tarefa 1 - Banco de Dados PostgreSQL</strong></h3>
 <ol>
 <li>
-<p>Implantação do <strong>Ubuntu 22.04</strong> no <code>server1</code> via MaaS.  </p>
+<p>Implantação do <strong>Ubuntu 22.04</strong> no <code>server1</code> via MAAS.</p>
 </li>
 <li>
-<p>Instalação do <strong>PostgreSQL</strong> e configuração do banco de dados para aceitar conexões remotas.<br />
-<a class="glightbox" href="../postgresql_status.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="PostgreSQL Ativo" src="../postgresql_status.jpg" /></a></p>
-</li>
-<li>
-<p>Testes de acessibilidade na própria máquina (<code>server1</code>).<br />
-<a class="glightbox" href="../postgresql_acesso_local.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Acesso Local ao PostgreSQL" src="../postgresql_acesso_local.jpg" /></a></p>
-</li>
-<li>
-<p>Teste de acessibilidade ao banco de outra máquina (<code>MAIN</code>).<br />
-<a class="glightbox" href="../postgresql_acesso_remoto.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Acesso Remoto ao PostgreSQL" src="../postgresql_acesso_remoto.jpg" /></a></p>
-</li>
-<li>
-<p>Verificação da porta em uso pelo PostgreSQL.<br />
-<a class="glightbox" href="../porta_de_acesso.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Porta do PostgreSQL" src="../porta_de_acesso.jpg" /></a></p>
+<p>Instalação do <strong>PostgreSQL</strong> e configuração para aceitar conexões remotas.</p>
 </li>
 </ol>
+<p>Para verificar se o PostgreSQL está rodando corretamente, utilizamos o comando:</p>
+<ul>
+<li><code>systemctl status postgresql</code>: exibe o status atual do serviço, confirmando que está <strong>ativo e habilitado</strong>.</li>
+</ul>
+<p><a class="glightbox" href="../postgresql_status.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="PostgreSQL Ativo" src="../postgresql_status.jpg" /></a></p>
+<ol>
+<li>
+<p>Para garantir que o banco de dados está acessível na própria máquina, utilizamos:</p>
+</li>
+<li>
+<p><code>telnet localhost 5432</code>: tenta abrir uma conexão com a porta padrão do PostgreSQL (5432) localmente, verificando se há resposta.</p>
+</li>
+<li><code>ifconfig</code>: confirma o IP atribuído à interface de rede da máquina.</li>
+<li><code>ufw allow 5432/tcp</code>: libera a porta 5432 no firewall para conexões externas (essa configuração foi feita previamente).</li>
+<li><code>journalctl -u postgresql</code>: exibe os logs de execução do serviço PostgreSQL, útil para diagnóstico de problemas ou confirmação de funcionamento.</li>
+</ol>
+<p><a class="glightbox" href="../postgresql_acesso_local.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Acesso Local ao PostgreSQL" src="../postgresql_acesso_local.jpg" /></a></p>
+<ol>
+<li>
+<p>Para validar o acesso a partir da máquina MAIN:</p>
+</li>
+<li>
+<p><code>telnet &lt;ip-do-server1&gt; 5432</code>: verifica se é possível se conectar ao banco remotamente a partir de outra máquina.</p>
+</li>
+<li><code>curl &lt;ip-do-server1&gt;:5432</code> ou <code>wget &lt;ip-do-server1&gt;:5432</code>: podem ser usados para verificar se há alguma resposta na porta TCP 5432, embora não sejam ideais para testar serviços PostgreSQL, pois esse protocolo não responde como HTTP.</li>
+</ol>
+<p><a class="glightbox" href="../postgresql_acesso_remoto.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Acesso Remoto ao PostgreSQL" src="../postgresql_acesso_remoto.jpg" /></a></p>
+<ol>
+<li>
+<p>Por fim, para saber em qual porta o PostgreSQL está escutando:</p>
+</li>
+<li>
+<p><code>ss -tlpn | grep postgres</code>: mostra as portas TCP abertas, os processos escutando e confirma que o PostgreSQL está ouvindo na porta 5432.</p>
+</li>
+</ol>
+<p><a class="glightbox" href="../porta_de_acesso.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Porta do PostgreSQL" src="../porta_de_acesso.jpg" /></a></p>
 <hr />
 <h3 id="tarefa-2-dashboard-do-maas-e-configuracao-das-maquinas"><strong>Tarefa 2 - Dashboard do MAAS e Configuração das Máquinas</strong></h3>
 <ol>
