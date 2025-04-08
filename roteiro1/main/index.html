@@ -763,15 +763,15 @@
 <p>Verificação do status do serviço PostgreSQL: ativo e habilitado. </p>
 </figcaption>
 </figure>
-<ol>
-<li>Para garantir que o banco de dados está acessível na própria máquina, utilizamos:</li>
-</ol>
+<p>Para garantir que o banco de dados está acessível na própria máquina, utilizamos:</p>
 <div class="termy" data-termynal data-ty-macos data-ty-title="bash"><span data-ty>telnet localhost 5432<br>ifconfig<br>ufw allow 5432/tcp<br>journalctl -u postgresql<br></span></div>
 
-<p>-<code>telnet localhost 5432</code>: verifica se a porta está respondendo localmente
-   -<code>ifconfig</code>: confirma o IP atribuído à interface de rede da máquina.
-   -<code>ufw allow 5432/tcp</code>: identifica o IP da interface de rede.
-   -<code>journalctl -u postgresql</code>: mostra os logs do serviço PostgreSQL.</p>
+<ul>
+<li><code>telnet localhost 5432</code>: verifica se a porta está respondendo localmente</li>
+<li><code>ifconfig</code>: confirma o IP atribuído à interface de rede da máquina.</li>
+<li><code>ufw allow 5432/tcp</code>: identifica o IP da interface de rede.</li>
+<li><code>journalctl -u postgresql</code>: mostra os logs do serviço PostgreSQL.</li>
+</ul>
 <figure>
 <p><a class="glightbox" href="../postgresql_acesso_local.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Acesso Local ao PostgreSQL" src="../postgresql_acesso_local.jpg" /></a></p>
 <figcaption>
