@@ -778,24 +778,16 @@
 <p>Teste de acessibilidade ao banco de dados na própria máquina.</p>
 </figcaption>
 </figure>
-<ol>
-<li>
 <p>Para validar o acesso a partir da máquina MAIN:</p>
-</li>
-<li>
-<p><code>telnet &lt;ip-do-server1&gt; 5432</code>: verifica se é possível se conectar ao banco remotamente a partir de outra máquina.</p>
-</li>
+<ul>
+<li><code>telnet &lt;ip-do-server1&gt; 5432</code>: verifica se é possível se conectar ao banco remotamente a partir de outra máquina.</li>
 <li><code>curl &lt;ip-do-server1&gt;:5432</code> ou <code>wget &lt;ip-do-server1&gt;:5432</code>: podem ser usados para verificar se há alguma resposta na porta TCP 5432, embora não sejam ideais para testar serviços PostgreSQL, pois esse protocolo não responde como HTTP.</li>
-</ol>
+</ul>
 <p><a class="glightbox" href="../postgresql_acesso_remoto.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Acesso Remoto ao PostgreSQL" src="../postgresql_acesso_remoto.jpg" /></a></p>
-<ol>
-<li>
 <p>Por fim, para saber em qual porta o PostgreSQL está escutando:</p>
-</li>
-<li>
-<p><code>ss -tlpn | grep postgres</code>: mostra as portas TCP abertas, os processos escutando e confirma que o PostgreSQL está ouvindo na porta 5432.</p>
-</li>
-</ol>
+<ul>
+<li><code>ss -tlpn | grep postgres</code>: mostra as portas TCP abertas, os processos escutando e confirma que o PostgreSQL está ouvindo na porta 5432.</li>
+</ul>
 <p><a class="glightbox" href="../porta_de_acesso.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Porta do PostgreSQL" src="../porta_de_acesso.jpg" /></a></p>
 <hr />
 <h3 id="tarefa-2-dashboard-do-maas-e-configuracao-das-maquinas"><strong>Tarefa 2 - Dashboard do MAAS e Configuração das Máquinas</strong></h3>
