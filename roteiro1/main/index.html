@@ -456,62 +456,8 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#tarefa-2-dashboard-do-maas-e-configuracao-das-maquinas" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tarefa 2 - Dashboard do MAAS e Configuração das Máquinas
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tarefa-3-deploy-manual-da-aplicacao-django" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tarefa 3 - Deploy Manual da Aplicação Django
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tarefa-4-deploy-automatizado-com-ansible" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tarefa 4 - Deploy Automatizado com Ansible
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tarefa-5-proxy-reverso-com-nginx" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tarefa 5 - Proxy Reverso com Nginx
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#discussoes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Discussões
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusao" class="md-nav__link">
-    <span class="md-ellipsis">
-      Conclusão
-    </span>
-  </a>
   
 </li>
       
@@ -663,62 +609,8 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#tarefa-2-dashboard-do-maas-e-configuracao-das-maquinas" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tarefa 2 - Dashboard do MAAS e Configuração das Máquinas
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tarefa-3-deploy-manual-da-aplicacao-django" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tarefa 3 - Deploy Manual da Aplicação Django
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tarefa-4-deploy-automatizado-com-ansible" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tarefa 4 - Deploy Automatizado com Ansible
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tarefa-5-proxy-reverso-com-nginx" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tarefa 5 - Proxy Reverso com Nginx
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#discussoes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Discussões
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusao" class="md-nav__link">
-    <span class="md-ellipsis">
-      Conclusão
-    </span>
-  </a>
   
 </li>
       
@@ -767,9 +659,7 @@
 </li>
 </ul>
 <hr />
-<ol>
-<li>Para verificar se o PostgreSQL está rodando corretamente, utilizamos o comando:</li>
-</ol>
+<h1 id="1-para-verificar-se-o-postgresql-esta-rodando-corretamente-utilizamos-o-comando">1. Para verificar se o PostgreSQL está rodando corretamente, utilizamos o comando:</h1>
 <div class="termy" data-termynal data-ty-macos data-ty-title="bash"><span data-ty>systemctl status postgresql<br></span></div>
 
 <figure>
@@ -778,7 +668,7 @@
 <p>Verificação do status do serviço PostgreSQL: ativo e habilitado. </p>
 </figcaption>
 </figure>
-<p>2. Para garantir que o banco de dados está acessível na própria máquina, utilizamos:</p>
+<h1 id="2-para-garantir-que-o-banco-de-dados-esta-acessivel-na-propria-maquina-utilizamos">2. Para garantir que o banco de dados está acessível na própria máquina, utilizamos:</h1>
 <div class="termy" data-termynal data-ty-macos data-ty-title="bash"><span data-ty>telnet localhost 5432<br>ifconfig<br>ufw allow 5432/tcp<br>journalctl -u postgresql<br></span></div>
 
 <ul>
@@ -793,7 +683,7 @@
 <p>Teste de acessibilidade ao banco de dados na própria máquina.</p>
 </figcaption>
 </figure>
-<p>3. Para validar o acesso a partir da máquina MAIN:</p>
+<h1 id="3-para-validar-o-acesso-a-partir-da-maquina-main">3. Para validar o acesso a partir da máquina MAIN:</h1>
 <div class="termy" data-termynal data-ty-macos data-ty-title="bash"><span data-ty>telnet &lt;ip-do-server1&gt; 5432<br>curl &lt;ip-do-server1&gt;:5432<br>wget &lt;ip-do-server1&gt;:5432<br></span></div>
 
 <ul>
@@ -801,7 +691,7 @@
 <li><code>curl &lt;ip-do-server1&gt;:5432</code> ou <code>wget &lt;ip-do-server1&gt;:5432</code>: podem ser usados para verificar se há alguma resposta na porta TCP 5432, embora não sejam ideais para testar serviços PostgreSQL, pois esse protocolo não responde como HTTP.</li>
 </ul>
 <p><a class="glightbox" href="../postgresql_acesso_remoto.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Acesso Remoto ao PostgreSQL" src="../postgresql_acesso_remoto.jpg" /></a></p>
-<p>4. Por fim, para saber em qual porta o PostgreSQL está escutando:</p>
+<h1 id="4-por-fim-para-saber-em-qual-porta-o-postgresql-esta-escutando">4. Por fim, para saber em qual porta o PostgreSQL está escutando:</h1>
 <div class="termy" data-termynal data-ty-macos data-ty-title="bash"><span data-ty>ss -tlpn | grep postgres<br></span></div>
 
 <ul>
