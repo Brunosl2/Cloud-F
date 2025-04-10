@@ -454,6 +454,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Tarefa 1 - Banco de Dados PostgreSQL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-para-verificar-se-o-postgresql-esta-rodando-corretamente-utilizamos-o-comando" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Para verificar se o PostgreSQL está rodando corretamente, utilizamos o comando:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-para-garantir-que-o-banco-de-dados-esta-acessivel-na-propria-maquina-utilizamos" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Para garantir que o banco de dados está acessível na própria máquina, utilizamos:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-para-validar-o-acesso-a-partir-da-maquina-main" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Para validar o acesso a partir da máquina MAIN:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -607,6 +640,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Tarefa 1 - Banco de Dados PostgreSQL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-para-verificar-se-o-postgresql-esta-rodando-corretamente-utilizamos-o-comando" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Para verificar se o PostgreSQL está rodando corretamente, utilizamos o comando:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-para-garantir-que-o-banco-de-dados-esta-acessivel-na-propria-maquina-utilizamos" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Para garantir que o banco de dados está acessível na própria máquina, utilizamos:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-para-validar-o-acesso-a-partir-da-maquina-main" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Para validar o acesso a partir da máquina MAIN:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -659,16 +725,16 @@
 </li>
 </ul>
 <hr />
-<h1 id="1-para-verificar-se-o-postgresql-esta-rodando-corretamente-utilizamos-o-comando">1. Para verificar se o PostgreSQL está rodando corretamente, utilizamos o comando:</h1>
+<h4 id="1-para-verificar-se-o-postgresql-esta-rodando-corretamente-utilizamos-o-comando">1. Para verificar se o PostgreSQL está rodando corretamente, utilizamos o comando:</h4>
 <div class="termy" data-termynal data-ty-macos data-ty-title="bash"><span data-ty>systemctl status postgresql<br></span></div>
 
 <figure>
 <p><a class="glightbox" href="../postgresql_status.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="PostgreSQL Ativo" src="../postgresql_status.jpg" /></a></p>
 <figcaption>
-<p>Verificação do status do serviço PostgreSQL: ativo e habilitado. </p>
+<p>Imagem 1 - Verificação do status do PostgreSQL via systemctl. </p>
 </figcaption>
 </figure>
-<h1 id="2-para-garantir-que-o-banco-de-dados-esta-acessivel-na-propria-maquina-utilizamos">2. Para garantir que o banco de dados está acessível na própria máquina, utilizamos:</h1>
+<h4 id="2-para-garantir-que-o-banco-de-dados-esta-acessivel-na-propria-maquina-utilizamos">2. Para garantir que o banco de dados está acessível na própria máquina, utilizamos:</h4>
 <div class="termy" data-termynal data-ty-macos data-ty-title="bash"><span data-ty>telnet localhost 5432<br>ifconfig<br>ufw allow 5432/tcp<br>journalctl -u postgresql<br></span></div>
 
 <ul>
@@ -680,49 +746,65 @@
 <figure>
 <p><a class="glightbox" href="../postgresql_acesso_local.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Acesso Local ao PostgreSQL" src="../postgresql_acesso_local.jpg" /></a></p>
 <figcaption>
-<p>Teste de acessibilidade ao banco de dados na própria máquina.</p>
+<p>Imagem 2 - Teste de conexão local ao PostgreSQL.</p>
 </figcaption>
 </figure>
-<h1 id="3-para-validar-o-acesso-a-partir-da-maquina-main">3. Para validar o acesso a partir da máquina MAIN:</h1>
+<h4 id="3-para-validar-o-acesso-a-partir-da-maquina-main">3. Para validar o acesso a partir da máquina MAIN:</h4>
 <div class="termy" data-termynal data-ty-macos data-ty-title="bash"><span data-ty>telnet &lt;ip-do-server1&gt; 5432<br>curl &lt;ip-do-server1&gt;:5432<br>wget &lt;ip-do-server1&gt;:5432<br></span></div>
 
 <ul>
 <li><code>telnet &lt;ip-do-server1&gt; 5432</code>: verifica se é possível se conectar ao banco remotamente a partir de outra máquina.</li>
 <li><code>curl &lt;ip-do-server1&gt;:5432</code> ou <code>wget &lt;ip-do-server1&gt;:5432</code>: podem ser usados para verificar se há alguma resposta na porta TCP 5432, embora não sejam ideais para testar serviços PostgreSQL, pois esse protocolo não responde como HTTP.</li>
 </ul>
+<figure>
 <p><a class="glightbox" href="../postgresql_acesso_remoto.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Acesso Remoto ao PostgreSQL" src="../postgresql_acesso_remoto.jpg" /></a></p>
+<figcaption>
+<p>Imagem 3 - Teste de acesso remoto ao PostgreSQL.</p>
+</figcaption>
+</figure>
 <h1 id="4-por-fim-para-saber-em-qual-porta-o-postgresql-esta-escutando">4. Por fim, para saber em qual porta o PostgreSQL está escutando:</h1>
 <div class="termy" data-termynal data-ty-macos data-ty-title="bash"><span data-ty>ss -tlpn | grep postgres<br></span></div>
 
 <ul>
 <li><code>ss -tlpn | grep postgres</code>: mostra as portas TCP abertas, os processos escutando e confirma que o PostgreSQL está ouvindo na porta 5432.</li>
 </ul>
+<figure>
 <p><a class="glightbox" href="../porta_de_acesso.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Porta do PostgreSQL" src="../porta_de_acesso.jpg" /></a></p>
+<figcaption>
+<p>Imagem 4 - Verificação da porta utilizada pelo PostgreSQL.</p>
+</figcaption>
+</figure>
 <hr />
-<h3 id="tarefa-2-dashboard-do-maas-e-configuracao-das-maquinas"><strong>Tarefa 2 - Dashboard do MAAS e Configuração das Máquinas</strong></h3>
-<ol>
-<li>
-<p>Exibir o dashboard do <strong>MAAS</strong> com as máquinas cadastradas.<br />
-<a class="glightbox" href="../maas_machines.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Dashboard do MAAS" src="../maas_machines.jpg" /></a></p>
-</li>
-<li>
-<p>Exibir a aba <strong>Images</strong>, listando as imagens sincronizadas no MAAS.<br />
-<a class="glightbox" href="../maas_images.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Imagens do MAAS" src="../maas_images.jpg" /></a></p>
-</li>
-<li>
-<p>Mostrar os detalhes dos testes de hardware de cada servidor.  </p>
-</li>
-<li><code>server1</code>:<br />
-<a class="glightbox" href="../server1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Server 1" src="../server1.jpg" /></a>  </li>
-<li><code>server2</code>:<br />
-<a class="glightbox" href="../server2.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Server 2" src="../server2.jpg" /></a>  </li>
-<li><code>server3</code>:<br />
-<a class="glightbox" href="../server3.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Server 3" src="../server3.jpg" /></a>  </li>
-<li><code>server4</code>:<br />
-<a class="glightbox" href="../server4.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Server 4" src="../server4.jpg" /></a>  </li>
-<li><code>server5</code>:<br />
-<a class="glightbox" href="../server5.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Server 5" src="../server5.jpg" /></a></li>
-</ol>
+<h2 id="tarefa-2-dashboard-do-maas-e-testes-nas-maquinas">Tarefa 2 - Dashboard do MAAS e Testes nas Máquinas</h2>
+<p>Nesta etapa realizamos a verificação do ambiente no MAAS, observando as máquinas disponíveis, imagens sincronizadas e os testes de hardware realizados em cada máquina.</p>
+<hr />
+<h3 id="1-visualizacao-do-dashboard-do-maas">1. Visualização do Dashboard do MAAS.</h3>
+<p>Através da interface web do MAAS, é possível visualizar todas as máquinas provisionadas e seus respectivos IPs.</p>
+<p><a class="glightbox" href="../maas_machines.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Dashboard do MAAS com as máquinas" src="../maas_machines.jpg" /></a>
+<em>Figura 5 - Dashboard do MAAS exibindo as máquinas configuradas.</em></p>
+<hr />
+<h3 id="2-verificacao-das-imagens-disponiveis">2. Verificação das imagens disponíveis.</h3>
+<p>No MAAS, as imagens sincronizadas ficam disponíveis para deploy nas máquinas.</p>
+<p><a class="glightbox" href="../maas_images.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Imagens disponíveis no MAAS" src="../maas_images.jpg" /></a>
+<em>Figura 6 - Imagens sincronizadas no MAAS.</em></p>
+<hr />
+<h3 id="3-verificacao-dos-testes-de-hardware-commissioning-em-cada-maquina">3. Verificação dos testes de hardware (Commissioning) em cada máquina.</h3>
+<p>Em cada máquina do MAAS foram realizados testes de hardware para garantir que estão operando corretamente. O resultado desses testes pode ser visualizado individualmente.</p>
+<p>Máquina <code>server1</code>:</p>
+<p><a class="glightbox" href="../server1.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Testes de Hardware - server1" src="../server1.jpg" /></a>
+<em>Figura 7 - Testes de hardware com status OK na máquina server1.</em></p>
+<p>Máquina <code>server2</code>:</p>
+<p><a class="glightbox" href="../server2.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Testes de Hardware - server2" src="../server2.jpg" /></a>
+<em>Figura 8 - Testes de hardware com status OK na máquina server2.</em></p>
+<p>Máquina <code>server3</code>:</p>
+<p><a class="glightbox" href="../server3.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Testes de Hardware - server3" src="../server3.jpg" /></a>
+<em>Figura 9 - Testes de hardware com status OK na máquina server3.</em></p>
+<p>Máquina <code>server4</code>:</p>
+<p><a class="glightbox" href="../server4.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Testes de Hardware - server4" src="../server4.jpg" /></a>
+<em>Figura 10 - Testes de hardware com status OK na máquina server4.</em></p>
+<p>Máquina <code>server5</code>:</p>
+<p><a class="glightbox" href="../server5.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Testes de Hardware - server5" src="../server5.jpg" /></a>
+<em>Figura 11 - Testes de hardware com status OK na máquina server5.</em></p>
 <hr />
 <h3 id="tarefa-3-deploy-manual-da-aplicacao-django"><strong>Tarefa 3 - Deploy Manual da Aplicação Django</strong></h3>
 <ol>
