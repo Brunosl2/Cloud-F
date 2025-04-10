@@ -1143,7 +1143,6 @@
 <hr />
 <h2 id="tarefa-2-dashboard-do-maas-e-testes-nas-maquinas">Tarefa 2 - Dashboard do MAAS e Testes nas Máquinas</h2>
 <p>Nesta etapa realizamos a verificação do ambiente no MAAS, observando as máquinas disponíveis, imagens sincronizadas e os testes de hardware realizados em cada máquina.</p>
-<hr />
 <h3 id="1-visualizacao-do-dashboard-do-maas">1. Visualização do Dashboard do MAAS.</h3>
 <p>Através da interface web do MAAS, é possível visualizar todas as máquinas provisionadas e seus respectivos IPs.</p>
 <figure>
@@ -1152,7 +1151,6 @@
 <p>Imagem 5 - Dashboard do MAAS exibindo as máquinas configuradas.</p>
 </figcaption>
 </figure>
-<hr />
 <h3 id="2-verificacao-das-imagens-disponiveis">2. Verificação das imagens disponíveis.</h3>
 <p>No MAAS, as imagens sincronizadas ficam disponíveis para deploy nas máquinas.</p>
 <figure>
@@ -1161,7 +1159,6 @@
 <p>Imagem 6 - Imagens sincronizadas no MAAS.</p>
 </figcaption>
 </figure>
-<hr />
 <h3 id="3-verificacao-dos-testes-de-hardware-commissioning-em-cada-maquina">3. Verificação dos testes de hardware (Commissioning) em cada máquina.</h3>
 <p>Em cada máquina do MAAS foram realizados testes de hardware para garantir que estão operando corretamente. O resultado desses testes pode ser visualizado individualmente.</p>
 <p>Máquina <code>server1</code>:</p>
@@ -1202,7 +1199,6 @@
 <hr />
 <h2 id="tarefa-3-deploy-manual-da-aplicacao-django">Tarefa 3 - Deploy Manual da Aplicação Django</h2>
 <p>Nesta tarefa foi realizado o deploy manual da aplicação Django em uma máquina <code>server2</code> provisionada no MAAS, utilizando o banco de dados PostgreSQL previamente instalado no <code>server1</code>.</p>
-<hr />
 <h3 id="1-visualizacao-do-dashboard-do-maas-com-as-maquinas-server1-e-server2">1. Visualização do Dashboard do MAAS com as máquinas <code>server1</code> e <code>server2</code>.</h3>
 <p>No Dashboard do MAAS é possível visualizar as duas máquinas (<code>server1</code> e <code>server2</code>) ativas e com seus respectivos IPs atribuídos.</p>
 <figure>
@@ -1211,7 +1207,6 @@
 <p>Imagem 12 - Dashboard do MAAS com as máquinas server1 e server2 configuradas.</p>
 </figcaption>
 </figure>
-<hr />
 <h3 id="2-teste-de-acesso-a-aplicacao-django-no-server2">2. Teste de acesso à aplicação Django no <code>server2</code>.</h3>
 <p>Após o deploy manual da aplicação, foi realizado o acesso ao Django Admin para comprovar o funcionamento correto da aplicação rodando no <code>server2</code>.</p>
 <figure>
@@ -1220,7 +1215,6 @@
 <p>Imagem 13 - Acesso ao painel Django Admin da aplicação no server2.</p>
 </figcaption>
 </figure>
-<hr />
 <h3 id="3-implementacao-manual-da-aplicacao-django-e-banco-de-dados">3. Implementação manual da aplicação Django e banco de dados.</h3>
 <p>O processo de implementação manual foi realizado em duas etapas:</p>
 <h4 id="banco-de-dados-server1">Banco de Dados (server1):</h4>
@@ -1254,7 +1248,6 @@
 <hr />
 <h2 id="tarefa-4-deploy-automatizado-da-aplicacao-django-com-ansible">Tarefa 4 - Deploy Automatizado da Aplicação Django com Ansible</h2>
 <p>Nesta tarefa foi realizado o deploy automatizado da aplicação Django em uma nova máquina <code>server3</code>, utilizando a ferramenta Ansible. O objetivo foi demonstrar a diferença entre o deploy manual e o automatizado.</p>
-<hr />
 <h3 id="1-visualizacao-do-dashboard-do-maas-com-as-maquinas-server1-server2-e-server3">1. Visualização do Dashboard do MAAS com as máquinas <code>server1</code>, <code>server2</code> e <code>server3</code>.</h3>
 <p>No Dashboard do MAAS é possível visualizar as três máquinas ativas com seus respectivos IPs atribuídos.</p>
 <figure>
@@ -1263,7 +1256,6 @@
 <p>Imagem 14 - Dashboard do MAAS com as máquinas server1, server2 e server3 configuradas.</p>
 </figcaption>
 </figure>
-<hr />
 <h3 id="2-teste-de-acesso-a-aplicacao-django-no-server2_1">2. Teste de acesso à aplicação Django no <code>server2</code>.</h3>
 <p>Foi realizado o acesso ao Django Admin no <code>server2</code> para comprovar o funcionamento da aplicação após o deploy.</p>
 <figure>
@@ -1272,7 +1264,6 @@
 <p>Imagem 15 - Acesso ao painel Django Admin da aplicação no server2.</p>
 </figcaption>
 </figure>
-<hr />
 <h3 id="3-teste-de-acesso-a-aplicacao-django-no-server3">3. Teste de acesso à aplicação Django no <code>server3</code>.</h3>
 <p>Após o deploy automatizado com Ansible, foi realizado o acesso ao Django Admin no <code>server3</code> para comprovar o funcionamento correto da aplicação.</p>
 <figure>
@@ -1281,7 +1272,6 @@
 <p>Imagem 16 - Acesso ao painel Django Admin da aplicação no server3.</p>
 </figcaption>
 </figure>
-<hr />
 <h3 id="4-diferenca-entre-instalar-manualmente-a-aplicacao-django-e-utilizando-o-ansible">4. Diferença entre instalar manualmente a aplicação Django e utilizando o Ansible.</h3>
 <p>A instalação manual da aplicação Django requer que todos os passos sejam realizados diretamente no terminal da máquina alvo. Isso inclui:</p>
 <ul>
