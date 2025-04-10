@@ -790,10 +790,9 @@
 </ol>
 </li>
 <li>
-<p>Para verificar se o PostgreSQL está rodando corretamente, utilizamos o comando</p>
+<p>Para verificar se o PostgreSQL está rodando corretamente, utilizamos o comando:</p>
 </li>
 </ol>
-<p>:</p>
 <div class="termy" data-termynal data-ty-macos data-ty-title="bash"><span data-ty>systemctl status postgresql<br></span></div>
 
 <figure>
@@ -803,9 +802,8 @@
 </figcaption>
 </figure>
 <ol>
-<li>Para garantir que o banco de dados está acessível na própria máquina, utilizamos</li>
+<li>Para garantir que o banco de dados está acessível na própria máquina, utilizamos:</li>
 </ol>
-<p>:</p>
 <div class="termy" data-termynal data-ty-macos data-ty-title="bash"><span data-ty>telnet localhost 5432<br>ifconfig<br>ufw allow 5432/tcp<br>journalctl -u postgresql<br></span></div>
 
 <ul>
@@ -821,21 +819,23 @@
 </figcaption>
 </figure>
 <ol>
-<li>Para validar o acesso a partir da máquina MAIN</li>
-</ol>
-<p>:</p>
-<ul>
-<li><code>telnet &lt;ip-do-server1&gt; 5432</code>: verifica se é possível se conectar ao banco remotamente a partir de outra máquina.</li>
+<li>
+<p>Para validar o acesso a partir da máquina MAIN:</p>
+</li>
+<li>
+<p><code>telnet &lt;ip-do-server1&gt; 5432</code>: verifica se é possível se conectar ao banco remotamente a partir de outra máquina.</p>
+</li>
 <li><code>curl &lt;ip-do-server1&gt;:5432</code> ou <code>wget &lt;ip-do-server1&gt;:5432</code>: podem ser usados para verificar se há alguma resposta na porta TCP 5432, embora não sejam ideais para testar serviços PostgreSQL, pois esse protocolo não responde como HTTP.</li>
-</ul>
+</ol>
 <p><a class="glightbox" href="../postgresql_acesso_remoto.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Acesso Remoto ao PostgreSQL" src="../postgresql_acesso_remoto.jpg" /></a></p>
 <ol>
-<li>Por fim, para saber em qual porta o PostgreSQL está escutando</li>
+<li>
+<p>Por fim, para saber em qual porta o PostgreSQL está escutando:</p>
+</li>
+<li>
+<p><code>ss -tlpn | grep postgres</code>: mostra as portas TCP abertas, os processos escutando e confirma que o PostgreSQL está ouvindo na porta 5432.</p>
+</li>
 </ol>
-<p>:</p>
-<ul>
-<li><code>ss -tlpn | grep postgres</code>: mostra as portas TCP abertas, os processos escutando e confirma que o PostgreSQL está ouvindo na porta 5432.</li>
-</ul>
 <p><a class="glightbox" href="../porta_de_acesso.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Porta do PostgreSQL" src="../porta_de_acesso.jpg" /></a></p>
 <hr />
 <h3 id="tarefa-2-dashboard-do-maas-e-configuracao-das-maquinas"><strong>Tarefa 2 - Dashboard do MAAS e Configuração das Máquinas</strong></h3>
