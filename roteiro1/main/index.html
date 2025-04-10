@@ -1357,33 +1357,39 @@
 <hr />
 <h2 id="tarefa-5-proxy-reverso-com-nginx-load-balancer">Tarefa 5 - Proxy Reverso com NGINX (Load Balancer)</h2>
 <p>Nesta tarefa foi realizada a configuração de um proxy reverso utilizando o NGINX na máquina <code>server4</code>. O objetivo foi criar um ponto único de acesso para a aplicação Django, realizando o balanceamento de carga entre <code>server2</code> e <code>server3</code>.</p>
-<hr />
 <h3 id="1-visualizacao-do-dashboard-do-maas-com-as-maquinas-server1-server2-server3-e-server4">1. Visualização do Dashboard do MAAS com as máquinas <code>server1</code>, <code>server2</code>, <code>server3</code> e <code>server4</code>.</h3>
 <p>No Dashboard do MAAS é possível visualizar as quatro máquinas ativas e com seus respectivos IPs atribuídos.</p>
+<figure>
 <p><a class="glightbox" href="../maas_dashboard_tarefa5.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Dashboard do MAAS com server1, server2, server3 e server4" src="../maas_dashboard_tarefa5.jpg" /></a></p>
+<figcaption>
 <p>Imagem 17 - Dashboard do MAAS com as máquinas server1, server2, server3 e server4 configuradas.</p>
-<hr />
+</figcaption>
+</figure>
 <h3 id="2-modificacao-do-conteudo-da-funcao-index-do-arquivo-tasksviewspy">2. Modificação do conteúdo da função <code>index</code> do arquivo <code>tasks/views.py</code>.</h3>
 <p>Foi alterada a mensagem da função <code>index</code> da aplicação Django em cada servidor (<code>server2</code> e <code>server3</code>) com o objetivo de identificar visualmente em qual servidor a requisição foi processada.</p>
 <p>Exemplo do conteúdo do <code>views.py</code> em <code>server2</code>:</p>
-<!-- bloco de código -->
-<p>def index(request):
-    return HttpResponse("Você está conectado ao server2")</p>
+<div class="termy" data-termynal data-ty-macos data-ty-title="bash"><span data-ty>def index(request):<br>    return HttpResponse(&quot;Você está conectado ao server2&quot;)<br></span></div>
+
 <p>Exemplo do conteúdo do <code>views.py</code> em <code>server3</code>:</p>
-<!-- bloco de código -->
-<p>def index(request):
-    return HttpResponse("Você está conectado ao server3")</p>
-<hr />
+<div class="termy" data-termynal data-ty-macos data-ty-title="bash"><span data-ty>def index(request):<br>    return HttpResponse(&quot;Você está conectado ao server3&quot;)<br></span></div>
+
 <h3 id="3-teste-de-requisicoes-get-via-nginx-proxy-reverso">3. Teste de requisições GET via NGINX (Proxy Reverso).</h3>
 <p>Foi realizado um <code>GET request</code> no endereço do <code>server4</code> (Proxy Reverso) configurado com o NGINX para balancear o acesso entre os servers <code>server2</code> e <code>server3</code>.</p>
 <p>A cada requisição, o NGINX direcionou a resposta de forma alternada, validando o funcionamento do balanceamento de carga.</p>
 <p>Primeira requisição retornando resposta do <code>server2</code>:</p>
+<figure>
 <p><a class="glightbox" href="../GET_server2.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="GET request - Resposta do server2" src="../GET_server2.jpg" /></a></p>
+<figcaption>
 <p>Imagem 18 - Resposta do Proxy Reverso redirecionando para o server2.</p>
-<hr />
+</figcaption>
+</figure>
 <p>Segunda requisição retornando resposta do <code>server3</code>:</p>
+<figure>
 <p><a class="glightbox" href="../GET_server3.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="GET request - Resposta do server3" src="../GET_server3.jpg" /></a></p>
+<figcaption>
 <p>Imagem 19 - Resposta do Proxy Reverso redirecionando para o server3.</p>
+</figcaption>
+</figure>
 <hr />
 <h2 id="discussoes"><strong>Discussões</strong></h2>
 <ul>
