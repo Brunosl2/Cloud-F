@@ -765,7 +765,9 @@
 <p>Verificação do status do serviço PostgreSQL: ativo e habilitado. </p>
 </figcaption>
 </figure>
-<p>Para garantir que o banco de dados está acessível na própria máquina, utilizamos:</p>
+<ol>
+<li>Para garantir que o banco de dados está acessível na própria máquina, utilizamos:</li>
+</ol>
 <div class="termy" data-termynal data-ty-macos data-ty-title="bash"><span data-ty>telnet localhost 5432<br>ifconfig<br>ufw allow 5432/tcp<br>journalctl -u postgresql<br></span></div>
 
 <ul>
@@ -780,11 +782,15 @@
 <p>Teste de acessibilidade ao banco de dados na própria máquina.</p>
 </figcaption>
 </figure>
+<ol>
+<li>
 <p>Para validar o acesso a partir da máquina MAIN:</p>
-<ul>
-<li><code>telnet &lt;ip-do-server1&gt; 5432</code>: verifica se é possível se conectar ao banco remotamente a partir de outra máquina.</li>
+</li>
+<li>
+<p><code>telnet &lt;ip-do-server1&gt; 5432</code>: verifica se é possível se conectar ao banco remotamente a partir de outra máquina.</p>
+</li>
 <li><code>curl &lt;ip-do-server1&gt;:5432</code> ou <code>wget &lt;ip-do-server1&gt;:5432</code>: podem ser usados para verificar se há alguma resposta na porta TCP 5432, embora não sejam ideais para testar serviços PostgreSQL, pois esse protocolo não responde como HTTP.</li>
-</ul>
+</ol>
 <p><a class="glightbox" href="../postgresql_acesso_remoto.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Acesso Remoto ao PostgreSQL" src="../postgresql_acesso_remoto.jpg" /></a></p>
 <p>Por fim, para saber em qual porta o PostgreSQL está escutando:</p>
 <ul>
