@@ -447,6 +447,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#criacao-da-infraestrutura-nuvem-bare-metal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Criação da Infraestrutura (Nuvem Bare-metal)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#tarefa-1-banco-de-dados-postgresql" class="md-nav__link">
     <span class="md-ellipsis">
       Tarefa 1 - Banco de Dados PostgreSQL
@@ -855,6 +864,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#criacao-da-infraestrutura-nuvem-bare-metal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Criação da Infraestrutura (Nuvem Bare-metal)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#tarefa-1-banco-de-dados-postgresql" class="md-nav__link">
     <span class="md-ellipsis">
       Tarefa 1 - Banco de Dados PostgreSQL
@@ -1147,6 +1165,11 @@
 <h2 id="objetivo"><strong>Objetivo</strong></h2>
 <p>O objetivo deste roteiro é aprender a configurar e gerenciar uma aplicação Django rodando em infraestrutura bare-metal utilizando o <strong>MaaS (Metal as a Service)</strong>. O roteiro aborda desde a instalação manual do banco de dados e da aplicação Django até a automação do deploy utilizando o Ansible e a configuração de um <strong>proxy reverso</strong> para balanceamento de carga.</p>
 <hr />
+<h2 id="criacao-da-infraestrutura-nuvem-bare-metal">Criação da Infraestrutura (Nuvem Bare-metal)</h2>
+<p>Nesta etapa inicial do projeto, foi realizada a criação da infraestrutura da nuvem bare-metal utilizando o MAAS (Metal as a Service). Todo o ambiente foi montado em servidores físicos (NUCs), com o objetivo de realizar o provisionamento automático das máquinas através de um servidor principal chamado <code>main</code>.</p>
+<p>O processo iniciou com a instalação do Ubuntu Server 22.04 LTS no <code>main</code>, onde foram realizadas as configurações básicas de rede, hostname e DNS. Após isso, foi instalado o MAAS versão 3.5.3, responsável pelo gerenciamento dos recursos físicos da nuvem. Com o MAAS instalado e configurado, foi possível acessar o dashboard web da ferramenta e realizar a importação das imagens do Ubuntu que seriam utilizadas posteriormente no deploy das máquinas.</p>
+<p>Além disso, foi feita a configuração do DHCP e DNS através do próprio MAAS, desabilitando o DHCP do roteador do kit e garantindo que o MAAS tivesse controle total sobre a atribuição de IPs das máquinas. Também foram cadastrados e comissionados os servidores <code>server1</code> até <code>server5</code>, configurando o Power Type como Intel AMT e realizando o boot via PXE. </p>
+<p>Por fim, foi criada uma bridge OVS (<code>br-ex</code>) nas máquinas, com o objetivo de facilitar a comunicação entre as VMs e os serviços de rede, e foi realizado o acesso remoto ao ambiente através de NAT, possibilitando o gerenciamento do kit a partir de redes externas como o Wi-Fi do Insper.</p>
 <h2 id="tarefa-1-banco-de-dados-postgresql"><strong>Tarefa 1 - Banco de Dados PostgreSQL</strong></h2>
 <ul>
 <li>
