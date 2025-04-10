@@ -651,10 +651,43 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#tarefa-5-proxy-reverso-com-nginx" class="md-nav__link">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tarefa-5-proxy-reverso-com-nginx-load-balancer" class="md-nav__link">
     <span class="md-ellipsis">
-      Tarefa 5 - Proxy Reverso com Nginx
+      Tarefa 5 - Proxy Reverso com NGINX (Load Balancer)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tarefa 5 - Proxy Reverso com NGINX (Load Balancer)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-visualizacao-do-dashboard-do-maas-com-as-maquinas-server1-server2-server3-e-server4" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Visualização do Dashboard do MAAS com as máquinas server1, server2, server3 e server4.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-modificacao-do-conteudo-da-funcao-index-do-arquivo-tasksviewspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Modificação do conteúdo da função index do arquivo tasks/views.py.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-teste-de-requisicoes-get-via-nginx-proxy-reverso" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Teste de requisições GET via NGINX (Proxy Reverso).
     </span>
   </a>
   
@@ -1026,10 +1059,43 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#tarefa-5-proxy-reverso-com-nginx" class="md-nav__link">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tarefa-5-proxy-reverso-com-nginx-load-balancer" class="md-nav__link">
     <span class="md-ellipsis">
-      Tarefa 5 - Proxy Reverso com Nginx
+      Tarefa 5 - Proxy Reverso com NGINX (Load Balancer)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tarefa 5 - Proxy Reverso com NGINX (Load Balancer)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-visualizacao-do-dashboard-do-maas-com-as-maquinas-server1-server2-server3-e-server4" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Visualização do Dashboard do MAAS com as máquinas server1, server2, server3 e server4.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-modificacao-do-conteudo-da-funcao-index-do-arquivo-tasksviewspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Modificação do conteúdo da função index do arquivo tasks/views.py.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-teste-de-requisicoes-get-via-nginx-proxy-reverso" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Teste de requisições GET via NGINX (Proxy Reverso).
     </span>
   </a>
   
@@ -1090,7 +1156,6 @@
 <p>Instalação do <strong>PostgreSQL</strong> e configuração para aceitar conexões remotas.</p>
 </li>
 </ul>
-<hr />
 <h3 id="1-para-verificar-se-o-postgresql-esta-rodando-corretamente-utilizamos-o-comando">1. Para verificar se o PostgreSQL está rodando corretamente, utilizamos o comando:</h3>
 <div class="termy" data-termynal data-ty-macos data-ty-title="bash"><span data-ty>systemctl status postgresql<br></span></div>
 
@@ -1290,27 +1355,35 @@
 </ul>
 <p>Dessa forma, o deploy com Ansible se mostra muito mais eficiente e prático para ambientes com múltiplos servidores.</p>
 <hr />
-<h3 id="tarefa-5-proxy-reverso-com-nginx"><strong>Tarefa 5 - Proxy Reverso com Nginx</strong></h3>
-<ol>
-<li>
-<p>Implantação do <code>server4</code> via MAAS.<br />
-<a class="glightbox" href="../maas_dashboard_tarefa5.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="MAAS - Tarefa 5" src="../maas_dashboard_tarefa5.jpg" /></a></p>
-</li>
-<li>
-<p>Configuração do <strong>Nginx</strong> como proxy reverso para balanceamento de carga.</p>
-</li>
-<li>
-<p>Modificação da resposta da aplicação para diferenciar <code>server2</code> e <code>server3</code>.</p>
-</li>
-<li>
-<p>Teste do Nginx redirecionando para <code>server2</code>.<br />
-<a class="glightbox" href="../GET_server2.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Proxy Reverso Nginx - Server 2" src="../GET_server2.jpg" /></a></p>
-</li>
-<li>
-<p>Teste do Nginx redirecionando para <code>server3</code>.<br />
-<a class="glightbox" href="../GET_server3.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Proxy Reverso Nginx - Server 3" src="../GET_server3.jpg" /></a></p>
-</li>
-</ol>
+<h2 id="tarefa-5-proxy-reverso-com-nginx-load-balancer">Tarefa 5 - Proxy Reverso com NGINX (Load Balancer)</h2>
+<p>Nesta tarefa foi realizada a configuração de um proxy reverso utilizando o NGINX na máquina <code>server4</code>. O objetivo foi criar um ponto único de acesso para a aplicação Django, realizando o balanceamento de carga entre <code>server2</code> e <code>server3</code>.</p>
+<hr />
+<h3 id="1-visualizacao-do-dashboard-do-maas-com-as-maquinas-server1-server2-server3-e-server4">1. Visualização do Dashboard do MAAS com as máquinas <code>server1</code>, <code>server2</code>, <code>server3</code> e <code>server4</code>.</h3>
+<p>No Dashboard do MAAS é possível visualizar as quatro máquinas ativas e com seus respectivos IPs atribuídos.</p>
+<p><a class="glightbox" href="../maas_dashboard_tarefa5.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Dashboard do MAAS com server1, server2, server3 e server4" src="../maas_dashboard_tarefa5.jpg" /></a></p>
+<p>Imagem 17 - Dashboard do MAAS com as máquinas server1, server2, server3 e server4 configuradas.</p>
+<hr />
+<h3 id="2-modificacao-do-conteudo-da-funcao-index-do-arquivo-tasksviewspy">2. Modificação do conteúdo da função <code>index</code> do arquivo <code>tasks/views.py</code>.</h3>
+<p>Foi alterada a mensagem da função <code>index</code> da aplicação Django em cada servidor (<code>server2</code> e <code>server3</code>) com o objetivo de identificar visualmente em qual servidor a requisição foi processada.</p>
+<p>Exemplo do conteúdo do <code>views.py</code> em <code>server2</code>:</p>
+<!-- bloco de código -->
+<p>def index(request):
+    return HttpResponse("Você está conectado ao server2")</p>
+<p>Exemplo do conteúdo do <code>views.py</code> em <code>server3</code>:</p>
+<!-- bloco de código -->
+<p>def index(request):
+    return HttpResponse("Você está conectado ao server3")</p>
+<hr />
+<h3 id="3-teste-de-requisicoes-get-via-nginx-proxy-reverso">3. Teste de requisições GET via NGINX (Proxy Reverso).</h3>
+<p>Foi realizado um <code>GET request</code> no endereço do <code>server4</code> (Proxy Reverso) configurado com o NGINX para balancear o acesso entre os servers <code>server2</code> e <code>server3</code>.</p>
+<p>A cada requisição, o NGINX direcionou a resposta de forma alternada, validando o funcionamento do balanceamento de carga.</p>
+<p>Primeira requisição retornando resposta do <code>server2</code>:</p>
+<p><a class="glightbox" href="../GET_server2.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="GET request - Resposta do server2" src="../GET_server2.jpg" /></a></p>
+<p>Imagem 18 - Resposta do Proxy Reverso redirecionando para o server2.</p>
+<hr />
+<p>Segunda requisição retornando resposta do <code>server3</code>:</p>
+<p><a class="glightbox" href="../GET_server3.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="GET request - Resposta do server3" src="../GET_server3.jpg" /></a></p>
+<p>Imagem 19 - Resposta do Proxy Reverso redirecionando para o server3.</p>
 <hr />
 <h2 id="discussoes"><strong>Discussões</strong></h2>
 <ul>
