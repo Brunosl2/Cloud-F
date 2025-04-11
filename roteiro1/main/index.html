@@ -725,6 +725,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#conclusao_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusão
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusao_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusão
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1142,6 +1160,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#conclusao_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusão
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusao_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusão
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1414,25 +1450,21 @@
 </figcaption>
 </figure>
 <hr />
-<h2 id="discussoes"><strong>Discussões</strong></h2>
-<ul>
-<li><strong>Dificuldades</strong>:</li>
-<li>Configuração do <strong>MaaS CLI</strong> para deploy das máquinas.</li>
-<li>Entendimento da configuração do <strong>proxy reverso com Nginx</strong>.</li>
-<li>
-<p>Automação do deploy usando Ansible.</p>
-</li>
-<li>
-<p><strong>Facilidades</strong>:</p>
-</li>
-<li>Instalação do banco de dados PostgreSQL.</li>
-<li>Uso de tunelamento SSH para acessar o Django admin.</li>
-</ul>
+<h2 id="discussoes">Discussões</h2>
+<p>Durante o desenvolvimento do roteiro, a parte mais difícil foi, sem dúvida, a configuração inicial do MAAS e o comissionamento das máquinas. Tivemos alguns problemas principalmente com a parte de rede, como o DHCP e o roteamento dos pacotes, o que exigiu bastante paciência, atenção aos detalhes e pesquisa na documentação.</p>
+<p>Outro ponto que deu um pouco de trabalho foi a criação da bridge OVS nas máquinas, já que era preciso configurar tudo certinho para garantir que a comunicação entre os servidores funcionasse como esperado.</p>
+<p>Por outro lado, a parte mais tranquila foi a instalação do PostgreSQL e da aplicação Django de forma manual, já que os passos eram bem claros e seguiam um padrão conhecido.</p>
+<p>Já o deploy com Ansible foi algo novo e que trouxe um certo desafio no início, principalmente para entender a lógica dos playbooks e como o processo de automação funcionava. Mas depois que tudo ficou configurado corretamente, o Ansible se mostrou uma ferramenta muito prática e eficiente, facilitando bastante o deploy em múltiplos servidores.</p>
 <hr />
 <h2 id="conclusao"><strong>Conclusão</strong></h2>
-<p>Este roteiro demonstrou a importância da automação na implantação de aplicações em infraestrutura bare-metal. O uso do MaaS facilitou a <strong>orquestração das máquinas</strong>, enquanto o Ansible permitiu a <strong>padronização e automação do deploy</strong>. O proxy reverso com Nginx garantiu <strong>alta disponibilidade e balanceamento de carga</strong>, tornando o sistema mais robusto e escalável.</p>
+<h2 id="conclusao_1">Conclusão</h2>
+<h2 id="conclusao_2">Conclusão</h2>
+<p>A realização deste roteiro foi essencial para colocar em prática tudo que aprendemos sobre infraestrutura bare-metal e o uso do MAAS. Foi um processo bem completo, que começou desde a instalação do sistema operacional Ubuntu até o deploy final da aplicação Django funcionando em um ambiente distribuído.</p>
+<p>No começo, passamos por toda a parte de configuração da nuvem, preparando o MAAS, criando a bridge OVS e cadastrando os servidores. Essa etapa foi importante para garantir que tudo estivesse pronto e funcionando para os próximos passos.</p>
+<p>Depois, fizemos o deploy manual do banco de dados PostgreSQL e da aplicação Django, o que ajudou bastante a entender melhor o funcionamento de cada parte da infraestrutura. Na sequência, usamos o Ansible para automatizar esse processo, o que deixou tudo muito mais rápido, fácil e padronizado.</p>
+<p>Por fim, configuramos o NGINX como proxy reverso, criando um ponto único de acesso para a aplicação e implementando o balanceamento de carga entre os servidores, deixando o ambiente com uma cara mais próxima de produção.</p>
+<p>No geral, o roteiro foi muito importante para ter uma visão prática e completa de como funciona o ciclo de vida de um ambiente em nuvem bare-metal, desde a sua criação até a entrega de uma aplicação funcionando de forma automatizada e eficiente.</p>
 <hr />
-<p>Agora o relatório está formatado exatamente como você queria! Se precisar de mais ajustes, só avisar. 🚀😃</p>
 
 
 
