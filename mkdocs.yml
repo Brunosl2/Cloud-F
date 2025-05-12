@@ -99,6 +99,7 @@ markdown_extensions:
   - pymdownx.tilde
   - pymdownx.blocks.caption
   - tables
+  - def_list
 
 
 plugins:
