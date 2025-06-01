@@ -1,123 +1,186 @@
-# Roteiro 3 - Deploy de Aplicação em OpenStack com Setup Automatizado
+# Roteiro 3 - OpenStack
 
-## Objetivo
-O objetivo deste roteiro é implantar uma aplicação utilizando o OpenStack, aproveitando a infraestrutura bare-metal criada previamente no [Roteiro 1](../roteiro1/main/). O processo abrange o setup do OpenStack, configuração de imagens, redes, flavors e a distribuição de instâncias de aplicação e banco de dados em máquinas virtuais.
+## Setup
 
----
+### Autenticação e Dashboard
+- Arquivo `openrc` criado com as credenciais de acesso ao OpenStack.
+- Acesso ao Horizon realizado com sucesso via `admin_domain`.
+- Dashboard mantido aberto durante toda a configuração.
 
-## Criação da Infraestrutura
-Este roteiro reutiliza a infraestrutura criada no Roteiro 1:
+### Tarefa 1
 
-- 5 servidores físicos provisionados pelo MAAS.
-- Juju para orquestração.
-- Bridge externa `br-ex` criada para conexão com o mundo externo.
+#### Status do Juju
+![Status do Juju](img/tarefa1_1.jpg)  
+/// caption 
+Status do ambiente Juju após bootstrap e deploy.
+///
 
----
+#### Dashboard do MAAS com as máquinas
+![Dashboard do MAAS](img/tarefa1_2.jpg)  
+/// caption 
+Exibição das máquinas disponíveis no ambiente MAAS.
+///
 
-## Setup do OpenStack
+#### Aba Compute Overview no OpenStack
+![Compute Overview](img/tarefa1_3.jpg)  
+/// caption 
+Visão geral de uso de recursos computacionais no OpenStack.
+/// 
 
-### Tarefa 1 - Validação Inicial
+#### Aba Compute Instances no OpenStack
+![Compute Instances](img/tarefa1_4.jpg)  
+/// caption 
+Instâncias criadas até o momento via Horizon.
+/// 
 
-- ![](img/tarefa1_1.png)
-- ![](img/tarefa1_2.png)
-- ![](img/tarefa1_3.png)
-- ![](img/tarefa1_4.png)
-- ![](img/tarefa1_5.png)
+#### Topologia da Rede
+![Topologia da Rede](img/tarefa1_5.jpg)  
+/// caption 
+Conexões entre redes interna, externa e instâncias.
+///
 
-### Etapas Executadas:
+### Imagens e Flavors
+- Cliente OpenStack instalado via Snap.
+- Credenciais carregadas com `source openrc`.
+- Serviços verificados com `openstack service list`.
+- Ajustes na rede:
+  ```bash
+  juju config neutron-api enable-ml2-dns="true"
+  juju config neutron-api-plugin-ovn dns-servers="172.16.0.1"
+  ```
+- Imagem Ubuntu Jammy importada no Glance.
+- Flavors criados:
+  ```
+  m1.tiny    1 vCPU   1 GB RAM   20 GB Disk
+  m1.small   1 vCPU   2 GB RAM   20 GB Disk
+  m1.medium  2 vCPU   4 GB RAM   20 GB Disk
+  m1.large   4 vCPU   8 GB RAM   20 GB Disk
+  ```
 
-1. **Autenticação:** carregamento das credenciais via `source openrc`
-2. **Horizon:** acesso ao dashboard e acompanhamento em tempo real.
-3. **OpenStack Client:** instalado via `snap` na máquina main.
-4. **Serviços:** verificados com `openstack service list`
-5. **Configurações adicionais:**
+### Rede Externa
+- Faixa: `172.16.7.0/23`
+- Criada rede externa `external_net`.
 
-<!-- bloco de código -->
-```bash
-juju config neutron-api enable-ml2-dns="true"
-juju config neutron-api-plugin-ovn dns-servers="172.16.0.1"
-```
+### Rede Interna e Roteador
+- Subnet: `192.169.0.0/24`
+- Criada rede interna `internal_net`.
+- Roteador conectado à rede externa.
 
-6. **Imagem:** Ubuntu Jammy importada manualmente.
-7. **Flavors:** criados sem disco efêmera:
+### Conexão
+- Par de chaves importado com `id_rsa.pub` da máquina main.
+- Grupo de segurança atualizado com SSH e ICMP liberados.
+- Topologia da rede validada conforme projeto da infraestrutura.
 
-- `m1.tiny` (1 vCPU, 1 GB RAM, 20 GB disk)
-- `m1.small`, `m1.medium`, `m1.large`
+### Instância Inicial
+- Instância `client` disparada com flavor `m1.tiny`, sem volume.
+- IP flutuante alocado e conectado com sucesso via SSH.
 
-8. **Rede Externa:** criada na faixa `172.16.7.0/20`
-9. **Rede Interna:** criada na faixa `192.169.0.0/24`
-10. **Roteador:** configurado para conectar rede interna à externa
-11. **Security Groups:** SSH e ICMP liberados
-12. **Key Pair:** importada `id_rsa.pub` da máquina main
-13. **Instância de teste:** `client` disparada com flavor `m1.tiny`
-14. **Floating IP:** alocado e testado com sucesso via SSH
+### Tarefa 2
 
-### Tarefa 2 - Mudanças no Setup
+#### Dashboard do MAAS atualizado
+![MAAS atualizado](img/tarefa2_1.jpg)  
+/// caption 
+Estado atualizado do MAAS após alocação de novas máquinas.
+///
 
-- ![](img/tarefa2_1.png)
-- ![](img/tarefa2_2.png)
-- ![](img/tarefa2_3.png)
-- ![](img/tarefa2_4.png)
+#### Compute Overview com novas instâncias
+![Compute Overview atualizado](img/tarefa2_2.jpg)  
+/// caption 
+Visão geral do uso de recursos após escalonamento de instâncias.
+///
 
-Explicação sobre diferenças e como cada recurso foi criado.
+#### Compute Instances atualizada
+![Compute Instances atualizada](img/tarefa2_3.jpg) 
+/// caption  
+Lista de todas as instâncias em execução com seus IPs e status.
+///
 
-### Tarefa 3 - Escalando os Nós
+#### Topologia de rede atualizada
+![Topologia atualizada](img/tarefa2_4.jpg)  
+/// caption 
+Atualização da topologia após criação de múltiplas instâncias.
+///
 
-- Liberação da máquina reserva no MAAS
-- Adição de nova unidade do `nova-compute`:
+#### Diferenças entre Tarefa 1 e Tarefa 2
+- Tarefa 2 inclui instâncias `db`, `api1`, `api2` e `lb`.
+- Alocação de máquinas novas (nodes 3 e 4).
+- Rede apresenta mais conexões na topologia.
 
-<!-- bloco de código -->
-```bash
-juju add-unit nova-compute
-```
+#### Como os recursos foram criados
+- Instâncias criadas via Horizon, com flavors definidos.
+- IPs internos e flutuantes alocados automaticamente.
+- Atribuição automática dos hosts visível no detalhe das instâncias.
 
-- Adição de unidade para block storage:
+## Escalando os Nós
 
-<!-- bloco de código -->
-```bash
-juju add-unit --to <machine-id> ceph-osd
-```
+- Verificação de máquina `ALLOCATED` no MAAS para adicionar ao cluster.
+- Comandos:
+  ```bash
+  juju add-unit nova-compute
+  juju add-unit --to <machine-id> ceph-osd
+  ```
+- Nova máquina adicionada como nó de cálculo e armazenamento.
 
-- ![](img/tarefa3_1.png)
+## App
 
----
+### Tarefa 3
 
-## App: Deploy da Aplicação em VMs OpenStack
+#### Arquitetura da Rede
+![Instâncias](img/Tarefa3.jpg) 
+/// caption  
+ Arquitetura de rede com instâncias conectadas à internal_net, roteador e external_net, com IP flutuante em lb (NGINX).
+///
 
-### Tarefa: Distribuição da Aplicação
+- Rede `192.169.0.0/24`: interna
+- Rede `172.16.0.0/20`: externa (alocação de floating IPs)
+- Instâncias:
+  - `client`
+  - `lb` (load balancer NGINX)
+  - `api1` e `api2`
+  - `db`
 
-- 2 instâncias com a API do projeto
-- 1 instância com o banco de dados
-- 1 instância com Nginx (Load Balancer)
+### Tarefa 4
 
-### Topologia:
+#### Execução do FastAPI
+![Instâncias](img/instancias.jpg) 
+/// caption  
+Lista final de instâncias rodando a aplicação.
+///
 
-- Rede interna: `192.169.0.0/24`
-- Rede externa: `172.16.0.0/20`
-- Balanceador distribui requests para APIs
+#### Alocação de Instâncias
+![DB](img/db.jpg)  
+/// caption
+Instância `db` alocada no host físico `node4.maas`.
+///
 
-### Tarefa 4 - Relatório e Prints
+![API1](img/api1.jpg)  
+/// caption 
+Instância `api1` alocada no host físico `node3.maas`.
+/// 
 
-- ![](img/tarefa4_1.png)
-- ![](img/tarefa4_2.png)
-- ![](img/tarefa4_3.png)
-- ![](img/tarefa4_4.png)
-- ![](img/tarefa4_5.png)
+![API2](img/api2.jpg)  
+/// caption 
+Instância `api2` alocada no host físico `node4.maas`.
+///
 
----
+![LB](img/lb.jpg)  
+/// caption
+Instância `lb` alocada no host físico `node5.maas`.
+///
 
-## Discussões
+#### Topologia
+![Topologia Rede](img/topologia.jpg) 
+/// caption  
+Representação das redes `external_net`, `internal_net` e `user_net`.
+///
 
-A parte mais complexa foi o setup inicial do OpenStack, especialmente a configuração de redes e roteadores. A documentação oficial exigiu interpretação cuidadosa para adaptação ao nosso ambiente.
+![Gráfico Topologia](img/grafico_topologia.jpg)  
+/// caption 
+Diagrama gráfico da infraestrutura conectada ao gateway e VMs.
+///
 
-Por outro lado, a utilização do Horizon tornou o processo de gerenciamento muito mais intuitivo. O deploy de instâncias e configuração de key pairs e security groups foram etapas bem sucedidas com impacto direto na funcionalidade do sistema.
-
-O balanceamento via Nginx funcionou conforme esperado, mostrando que o OpenStack fornece uma estrutura robusta e escalável para hospedar aplicações em ambientes reais.
-
----
-
-## Conclusão
-
-O Roteiro 3 demonstrou a versatilidade do OpenStack como plataforma de virtualização em ambiente bare-metal. Aproveitando a infraestrutura criada anteriormente, conseguimos configurar uma nuvem privada funcional e escalar recursos conforme a demanda.
-
-Com as instâncias distribuídas entre diferentes servidores e a aplicação balanceada via Nginx, atingimos um ambiente semelhante ao de produção em empresas, com boas práticas de separação de serviços e alta disponibilidade.
+#### Visão Geral
+![Visão Geral](img/visao_geral.jpg)  
+/// caption 
+Painel de uso de recursos computacionais e de rede no Horizon.
+///
