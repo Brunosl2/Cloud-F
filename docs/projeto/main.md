@@ -1,7 +1,8 @@
 # **Projeto - Cloud F**
 
-link para o video: https://youtu.be/60M0lqnCr9g
-link para o repositorio: https://github.com/juliadn/cloudf-projeto.git
+- link para o video: [Video](https://youtu.be/60M0lqnCr9g)
+> O vídeo contém uma demonstração de como funciona a api, mostrando os dados em tempo real acessando o banco Postgres
+- link para o repositorio: [Repositorio](https://github.com/juliadn/cloudf-projeto.git)
 
 ## KIT-F
 
