@@ -1,5 +1,8 @@
 # **Projeto - Cloud F**
 
+link para o video: https://youtu.be/60M0lqnCr9g
+link para o repositorio: https://github.com/juliadn/cloudf-projeto.git
+
 ## KIT-F
 
 Bruno Locatelli
