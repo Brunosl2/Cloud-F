@@ -65,7 +65,8 @@ Um time DevOps é essencial para garantir agilidade e confiabilidade na entrega.
 #### Questão (c) - Plano de DR e HA
 
 **Resposta:**
-[Espaço para resposta]
+
+As maiores ameaças pro nosso sistema seriam falha de hardware, ataques cibernéticos (tipo ransomware) e erro humano (alguém apagando algo sem querer, por exemplo). A gente precisa ter backup automático, criptografado, e armazenado em mais de um lugar (tipo diferentes regiões). Também vamos monitorar tudo o tempo todo e, se algo cair, um outro servidor assume automaticamente (failover). A alta disponibilidade vai ser feita com containers orquestrados, balanceador de carga e várias instâncias rodando ao mesmo tempo pra não deixar o sistema fora do ar.
 
 
 

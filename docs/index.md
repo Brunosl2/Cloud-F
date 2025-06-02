@@ -17,9 +17,9 @@ Julia Diniz
 
 - [x] Roteiro 1 - Data 18/03/2025
 - [x] Roteiro 2 - Data 11/04/2025
-- [ ] Roteiro 3
-- [ ] Roteiro 4
-- [ ] Projeto
+- [x] Roteiro 3 - Data 30/05/2025
+- [x] Roteiro 4 - Data 1/06/2025
+- [x] Projeto - Data 1/06/2025
 
 
 ## Referências

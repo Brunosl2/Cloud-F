@@ -67,7 +67,7 @@ SECRET_KEY=sua_chave_secreta
 
 3\. **Inicie os Containers**
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
    
 O comando irá baixar as imagens do Docker Hub e iniciar os serviços da aplicação e do banco de dados.
